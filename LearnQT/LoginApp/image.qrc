@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>me.jfif</file>
+        <file>plasma-5-10-cascade-4k.png</file>
+    </qresource>
+</RCC>
