@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/desktop.jpg</file>
+        <file>bullet.cpp</file>
+        <file>img/me.jfif</file>
+        <file>img/plasma-5-10-cascade-4k.png</file>
+    </qresource>
+</RCC>
