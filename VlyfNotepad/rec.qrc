@@ -11,4 +11,25 @@
         <file>img/undo.png</file>
         <file>img/me.jfif</file>
     </qresource>
+    <qresource prefix="/">
+        <file>img/win/editcopy.png</file>
+        <file>img/win/editcut.png</file>
+        <file>img/win/editpaste.png</file>
+        <file>img/win/editredo.png</file>
+        <file>img/win/editundo.png</file>
+        <file>img/win/exportpdf.png</file>
+        <file>img/win/filenew.png</file>
+        <file>img/win/fileopen.png</file>
+        <file>img/win/fileprint.png</file>
+        <file>img/win/filesave.png</file>
+        <file>img/win/textbold.png</file>
+        <file>img/win/textcenter.png</file>
+        <file>img/win/textitalic.png</file>
+        <file>img/win/textjustify.png</file>
+        <file>img/win/textleft.png</file>
+        <file>img/win/textright.png</file>
+        <file>img/win/textunder.png</file>
+        <file>img/win/zoomin.png</file>
+        <file>img/win/zoomout.png</file>
+    </qresource>
 </RCC>

@@ -46,7 +46,6 @@ DISTFILES += \
     img/new.jpg \
     img/Open.jpg \
     img/Saveas.jpeg \
-    img/copy.png \
     img/cut.png \
     img/paste.png \
     img/redo.png \
