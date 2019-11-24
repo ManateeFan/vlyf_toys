@@ -44,9 +44,12 @@ private slots:
 
     void on_actionBackgroundColor_Edit_Text_triggered();
 
+
+
 private:
     Ui::MainWindow *ui;
     QString filePath;
+
 };
 
 #endif // MAINWINDOW_H

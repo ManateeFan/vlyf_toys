@@ -18,7 +18,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -41,15 +40,18 @@ public:
     QAction *actionColor;
     QAction *actionBackgroundColor;
     QAction *actionBackgroundColor_Edit_Text;
+    QAction *actionZoom_Z;
+    QAction *actionStatus_S;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QTextEdit *textEdit;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuEdit;
-    QMenu *menuAbout;
+    QMenu *menuStyle;
+    QMenu *menuView;
+    QMenu *menuHelp;
     QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -109,6 +111,12 @@ public:
         actionBackgroundColor->setObjectName(QStringLiteral("actionBackgroundColor"));
         actionBackgroundColor_Edit_Text = new QAction(MainWindow);
         actionBackgroundColor_Edit_Text->setObjectName(QStringLiteral("actionBackgroundColor_Edit_Text"));
+        actionZoom_Z = new QAction(MainWindow);
+        actionZoom_Z->setObjectName(QStringLiteral("actionZoom_Z"));
+        actionStatus_S = new QAction(MainWindow);
+        actionStatus_S->setObjectName(QStringLiteral("actionStatus_S"));
+        actionStatus_S->setCheckable(true);
+        actionStatus_S->setChecked(true);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -123,24 +131,27 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 772, 25));
+        menuBar->setGeometry(QRect(0, 0, 772, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menuBar);
         menuEdit->setObjectName(QStringLiteral("menuEdit"));
-        menuAbout = new QMenu(menuBar);
-        menuAbout->setObjectName(QStringLiteral("menuAbout"));
+        menuStyle = new QMenu(menuBar);
+        menuStyle->setObjectName(QStringLiteral("menuStyle"));
+        menuView = new QMenu(menuBar);
+        menuView->setObjectName(QStringLiteral("menuView"));
+        menuHelp = new QMenu(menuBar);
+        menuHelp->setObjectName(QStringLiteral("menuHelp"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
-        menuBar->addAction(menuAbout->menuAction());
+        menuBar->addAction(menuStyle->menuAction());
+        menuBar->addAction(menuView->menuAction());
+        menuBar->addAction(menuHelp->menuAction());
         menuFile->addAction(actionNew);
         menuFile->addAction(actionOpen);
         menuFile->addSeparator();
@@ -152,11 +163,13 @@ public:
         menuEdit->addAction(actionRedo);
         menuEdit->addAction(actionUndo);
         menuEdit->addSeparator();
-        menuEdit->addAction(actionFont);
         menuEdit->addAction(actionColor);
         menuEdit->addAction(actionBackgroundColor);
         menuEdit->addAction(actionBackgroundColor_Edit_Text);
-        menuAbout->addAction(actionAbout_me);
+        menuStyle->addAction(actionFont);
+        menuView->addAction(actionZoom_Z);
+        menuView->addAction(actionStatus_S);
+        menuHelp->addAction(actionAbout_me);
         mainToolBar->addAction(actionNew);
         mainToolBar->addAction(actionOpen);
         mainToolBar->addAction(actionSave);
@@ -186,14 +199,21 @@ public:
         actionPaste->setText(QApplication::translate("MainWindow", "Paste", Q_NULLPTR));
         actionRedo->setText(QApplication::translate("MainWindow", "Redo", Q_NULLPTR));
         actionUndo->setText(QApplication::translate("MainWindow", "Undo", Q_NULLPTR));
-        actionAbout_me->setText(QApplication::translate("MainWindow", "About me", Q_NULLPTR));
-        actionFont->setText(QApplication::translate("MainWindow", "Font", Q_NULLPTR));
+        actionAbout_me->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216\346\210\221", Q_NULLPTR));
+        actionFont->setText(QApplication::translate("MainWindow", "\345\255\227\344\275\223", Q_NULLPTR));
+#ifndef QT_NO_SHORTCUT
+        actionFont->setShortcut(QApplication::translate("MainWindow", "F", Q_NULLPTR));
+#endif // QT_NO_SHORTCUT
         actionColor->setText(QApplication::translate("MainWindow", "Color", Q_NULLPTR));
         actionBackgroundColor->setText(QApplication::translate("MainWindow", "Background Color", Q_NULLPTR));
         actionBackgroundColor_Edit_Text->setText(QApplication::translate("MainWindow", "BackgroundColor Edit Text", Q_NULLPTR));
-        menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
-        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
-        menuAbout->setTitle(QApplication::translate("MainWindow", "About", Q_NULLPTR));
+        actionZoom_Z->setText(QApplication::translate("MainWindow", "\347\274\251\346\224\276(Z)", Q_NULLPTR));
+        actionStatus_S->setText(QApplication::translate("MainWindow", "\347\212\266\346\200\201\346\240\217(S)", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266(F)", Q_NULLPTR));
+        menuEdit->setTitle(QApplication::translate("MainWindow", "\347\274\226\350\276\221(E)", Q_NULLPTR));
+        menuStyle->setTitle(QApplication::translate("MainWindow", "\346\240\274\345\274\217(O)", Q_NULLPTR));
+        menuView->setTitle(QApplication::translate("MainWindow", "\346\237\245\347\234\213(V)", Q_NULLPTR));
+        menuHelp->setTitle(QApplication::translate("MainWindow", "\345\270\256\345\212\251", Q_NULLPTR));
     } // retranslateUi
 
 };

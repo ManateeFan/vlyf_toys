@@ -8,6 +8,7 @@
 #include <QFont>
 #include <QColorDialog>
 #include <QColor>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,8 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowIcon(QIcon(":/rec/img/me.jfif"));
     setCentralWidget(ui->textEdit);
     setWindowTitle("GeniusVlyf Notepad");
+
+
 }
 
 MainWindow::~MainWindow()
@@ -150,3 +154,4 @@ void MainWindow::on_actionBackgroundColor_Edit_Text_triggered()
         ui->textEdit->setPalette(QPalette(color));
     }
 }
+
