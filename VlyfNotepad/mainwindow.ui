@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
-    <height>619</height>
+    <width>819</width>
+    <height>603</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>772</width>
+     <width>819</width>
      <height>26</height>
     </rect>
    </property>
@@ -52,6 +52,7 @@
     <addaction name="actionColor"/>
     <addaction name="actionBackgroundColor"/>
     <addaction name="actionBackgroundColor_Edit_Text"/>
+    <addaction name="actionFind"/>
    </widget>
    <widget class="QMenu" name="menuStyle">
     <property name="title">
@@ -68,7 +69,7 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>帮助</string>
+     <string>帮助(H)</string>
     </property>
     <addaction name="actionAbout_me"/>
    </widget>
@@ -216,6 +217,11 @@
    </property>
    <property name="text">
     <string>状态栏(S)</string>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="text">
+    <string>Find</string>
    </property>
   </action>
  </widget>

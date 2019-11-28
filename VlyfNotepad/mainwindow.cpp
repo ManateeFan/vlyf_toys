@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QPushButton>
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
@@ -15,12 +16,36 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    ui->textEdit->setFont(QFont("微软雅黑", 12));
     setWindowIcon(QIcon(":/rec/img/me.jfif"));
     setCentralWidget(ui->textEdit);
     setWindowTitle("GeniusVlyf Notepad");
 
+    //status Bar
+    statusBar = new QStatusBar(this);
+    statusBar->addPermanentWidget(new QLabel("welcome",statusBar));
+    setStatusBar(statusBar);
+    //Set findDialog
+    findDialog = new QDialog(this);
+    findDialog->setWindowTitle("查找");
+    QHBoxLayout* findDialogLayout = new QHBoxLayout(findDialog);
 
+    QHBoxLayout* findLabelLine = new QHBoxLayout(findDialog);
+
+    QLabel* findLabel = new QLabel("查找文本:", findDialog);
+    findLineEdit = new QLineEdit(findDialog);
+    findLabelLine->addWidget(findLabel);
+    findLabelLine->addWidget(findLineEdit);
+    QVBoxLayout* findBtnLayout = new QVBoxLayout(findDialog);
+    QPushButton* btnFindNext = new QPushButton("查找下一个", findDialog);
+    QPushButton* btnFindCancle = new QPushButton("取消", findDialog);
+    findBtnLayout->addWidget(btnFindNext);
+    findBtnLayout->addWidget(btnFindCancle);
+
+    findDialogLayout->addLayout(findLabelLine);
+    findDialogLayout->addLayout(findBtnLayout);
+    connect(btnFindNext, &QPushButton::clicked, this, &MainWindow::ShowFindText);
+    connect(btnFindCancle, &QPushButton::clicked, findDialog, &QDialog::close);
 }
 
 MainWindow::~MainWindow()
@@ -155,3 +180,27 @@ void MainWindow::on_actionBackgroundColor_Edit_Text_triggered()
     }
 }
 
+// show findDialog
+void MainWindow::on_actionFind_triggered()
+{
+    findDialog->show();
+}
+
+
+
+void MainWindow::ShowFindText()
+{
+    QString findText = findLineEdit->text();
+    if(!ui->textEdit->find(findText,QTextDocument::FindBackward))
+    {
+        QMessageBox::warning(findDialog, "未找到", "找不到" + QString('"') + findText + QString('"') );
+    }
+}
+
+void MainWindow::on_actionStatus_S_triggered()
+{
+    if(!ui->actionStatus_S->isChecked())
+        this->statusBar->hide();
+    else
+        this->statusBar->show();
+}

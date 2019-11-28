@@ -42,6 +42,7 @@ public:
     QAction *actionBackgroundColor_Edit_Text;
     QAction *actionZoom_Z;
     QAction *actionStatus_S;
+    QAction *actionFind;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QTextEdit *textEdit;
@@ -57,7 +58,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(772, 619);
+        MainWindow->resize(819, 603);
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QStringLiteral("actionNew"));
         QIcon icon;
@@ -117,6 +118,8 @@ public:
         actionStatus_S->setObjectName(QStringLiteral("actionStatus_S"));
         actionStatus_S->setCheckable(true);
         actionStatus_S->setChecked(true);
+        actionFind = new QAction(MainWindow);
+        actionFind->setObjectName(QStringLiteral("actionFind"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -131,7 +134,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 772, 26));
+        menuBar->setGeometry(QRect(0, 0, 819, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menuBar);
@@ -166,6 +169,7 @@ public:
         menuEdit->addAction(actionColor);
         menuEdit->addAction(actionBackgroundColor);
         menuEdit->addAction(actionBackgroundColor_Edit_Text);
+        menuEdit->addAction(actionFind);
         menuStyle->addAction(actionFont);
         menuView->addAction(actionZoom_Z);
         menuView->addAction(actionStatus_S);
@@ -209,11 +213,12 @@ public:
         actionBackgroundColor_Edit_Text->setText(QApplication::translate("MainWindow", "BackgroundColor Edit Text", Q_NULLPTR));
         actionZoom_Z->setText(QApplication::translate("MainWindow", "\347\274\251\346\224\276(Z)", Q_NULLPTR));
         actionStatus_S->setText(QApplication::translate("MainWindow", "\347\212\266\346\200\201\346\240\217(S)", Q_NULLPTR));
+        actionFind->setText(QApplication::translate("MainWindow", "Find", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266(F)", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "\347\274\226\350\276\221(E)", Q_NULLPTR));
         menuStyle->setTitle(QApplication::translate("MainWindow", "\346\240\274\345\274\217(O)", Q_NULLPTR));
         menuView->setTitle(QApplication::translate("MainWindow", "\346\237\245\347\234\213(V)", Q_NULLPTR));
-        menuHelp->setTitle(QApplication::translate("MainWindow", "\345\270\256\345\212\251", Q_NULLPTR));
+        menuHelp->setTitle(QApplication::translate("MainWindow", "\345\270\256\345\212\251(H)", Q_NULLPTR));
     } // retranslateUi
 
 };

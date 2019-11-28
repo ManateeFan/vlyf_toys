@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDialog>
+#include <QLineEdit>
+#include <QStatusBar>
 
 namespace Ui {
 class MainWindow;
@@ -44,12 +47,19 @@ private slots:
 
     void on_actionBackgroundColor_Edit_Text_triggered();
 
+    void on_actionFind_triggered();
 
+    void ShowFindText();
+    void on_actionStatus_S_triggered();
 
 private:
     Ui::MainWindow *ui;
     QString filePath;
 
+    //FindDialog
+    QDialog* findDialog;
+    QLineEdit* findLineEdit;
+    QStatusBar* statusBar;
 };
 
 #endif // MAINWINDOW_H
