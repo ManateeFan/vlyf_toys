@@ -16,4 +16,4 @@
 
 ### 截图
 
-![picture](picture.png)
+![picture](picture.PNG)
