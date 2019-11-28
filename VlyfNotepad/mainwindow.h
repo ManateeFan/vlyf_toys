@@ -5,7 +5,7 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QStatusBar>
-
+#include <QLabel>
 namespace Ui {
 class MainWindow;
 }
@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void timerEvent(QTimerEvent*);
 private slots:
     void on_actionNew_triggered();
 
@@ -60,6 +60,9 @@ private:
     QDialog* findDialog;
     QLineEdit* findLineEdit;
     QStatusBar* statusBar;
+    QLabel* statusLabel;
+    QTimer* timer;
+    QTextCursor cursor;
 };
 
 #endif // MAINWINDOW_H

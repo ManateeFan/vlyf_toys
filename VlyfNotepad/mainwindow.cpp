@@ -10,6 +10,7 @@
 #include <QColorDialog>
 #include <QColor>
 #include <QLabel>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,9 +23,13 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("GeniusVlyf Notepad");
 
     //status Bar
+    timer = new QTimer;
     statusBar = new QStatusBar(this);
-    statusBar->addPermanentWidget(new QLabel("welcome",statusBar));
+    cursor = ui->textEdit->textCursor();
+    statusLabel = new QLabel("第"+QString::number(cursor.blockNumber()+1)+"行,第"+QString::number(cursor.columnNumber()+1)+"列",statusBar);
+    statusBar->addWidget(statusLabel);
     setStatusBar(statusBar);
+    timer->start(1);
     //Set findDialog
     findDialog = new QDialog(this);
     findDialog->setWindowTitle("查找");
@@ -51,6 +56,13 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::timerEvent(QTimerEvent *)
+{
+    cursor = ui->textEdit->textCursor();
+    statusLabel->setText("第"+QString::number(cursor.blockNumber()+1)+"行,第"+QString::number(cursor.columnNumber()+1)+"列");
+    statusBar->addPermanentWidget(statusLabel);
 }
 
 void MainWindow::on_actionNew_triggered()
