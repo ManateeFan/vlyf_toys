@@ -89,6 +89,21 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
+    if(filePath.isEmpty())
+    {
+        QString fileName = QFileDialog::getSaveFileName(this, "另存为", "Text Files(*.txt)");
+        QFile file(fileName);
+        if(!file.open(QFile::WriteOnly | QFile::Text))
+        {
+            QMessageBox::warning(this,"..","file not open!");
+            return;
+        }
+        QTextStream out(&file);
+        out << ui->textEdit->toPlainText();
+        file.flush();
+        file.close();
+        return;
+    }
     QFile file(filePath);
     if(!file.open(QFile::WriteOnly | QFile::Text))
     {
