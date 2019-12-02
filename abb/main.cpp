@@ -112,9 +112,61 @@ void Fuck_new_while_not(string const& str)
 		cout << "Fail" << endl;
 	}
 }
+
+void FuckReal(string const& str)
+{
+	Stata stata = Stata::s0;
+	for (auto ch : str)
+	{
+		switch (stata)
+		{
+		case Stata::s0:
+			if ('1' <= ch && ch <= '9') stata = Stata::s1;
+			else stata = Stata::se;
+			break;
+		case Stata::s1:
+			if ('0' <= ch && ch <= '9') stata = Stata::s1;
+			else if (ch == '.') stata = Stata::s2;
+			else stata = Stata::se;
+			break;
+		case Stata::s2:
+			if ('0' <= ch && ch <= '9') stata = Stata::s3;
+			else stata = Stata::se;
+			break;
+		case Stata::s3:
+			if ('0' <= ch && ch <= '9') stata = Stata::s3;
+			else if (ch == 'E' || ch == 'e') stata = Stata::s4;
+			else stata = Stata::se;
+			break;
+		case Stata::s4:
+			if (ch == '+' || ch == '-') stata = Stata::s5;
+			else stata = Stata::se;
+			break;
+		case Stata::s5:
+			if ('1' <= ch && ch <= '9') stata = Stata::s6;
+			else stata = Stata::se;
+			break;
+		case Stata::s6:
+			if ('0' <= ch && ch <= '9') stata = Stata::s6;
+			else stata = Stata::se;
+			break;
+		}
+	}
+	if (stata == Stata::s1 || stata == Stata::s3 || stata == Stata::s6)
+	{
+		cout << "Real number" << endl;
+	}
+	else
+	{
+		cout << "False number" << endl;
+	}
+}
 int main()
 {
 	string str;
+	cout << "match real number: ";
+	cin >> str;
+	FuckReal(str);
 	cout << "match ab*: ";
 	cin >> str;
 	Fuck_abbbb(str);
