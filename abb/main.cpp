@@ -116,12 +116,14 @@ void Fuck_new_while_not(string const& str)
 void FuckReal(string const& str)
 {
 	Stata stata = Stata::s0;
-	for (auto ch : str)
+	for (int i = 0; i < str.length(); i++)
 	{
+		char ch = str[i];
 		switch (stata)
 		{
 		case Stata::s0:
 			if ('1' <= ch && ch <= '9') stata = Stata::s1;
+			else if (ch == '0') stata = Stata::s3;
 			else stata = Stata::se;
 			break;
 		case Stata::s1:
@@ -130,29 +132,20 @@ void FuckReal(string const& str)
 			else stata = Stata::se;
 			break;
 		case Stata::s2:
-			if ('0' <= ch && ch <= '9') stata = Stata::s3;
+			if ('0' <= ch && ch <= '9') stata = Stata::s2;
 			else stata = Stata::se;
 			break;
 		case Stata::s3:
-			if ('0' <= ch && ch <= '9') stata = Stata::s3;
-			else if (ch == 'E' || ch == 'e') stata = Stata::s4;
+			if ('0' <= ch && ch <= '9') stata = Stata::s1;
+			else if (ch == '.') stata = Stata::s2;
 			else stata = Stata::se;
 			break;
-		case Stata::s4:
-			if (ch == '+' || ch == '-') stata = Stata::s5;
-			else stata = Stata::se;
-			break;
-		case Stata::s5:
-			if ('1' <= ch && ch <= '9') stata = Stata::s6;
-			else stata = Stata::se;
-			break;
-		case Stata::s6:
-			if ('0' <= ch && ch <= '9') stata = Stata::s6;
-			else stata = Stata::se;
-			break;
+		case Stata::se:
+			cout << "False type" << endl;
+			return;
 		}
 	}
-	if (stata == Stata::s1 || stata == Stata::s3 || stata == Stata::s6)
+	if (stata == Stata::s1 || stata == Stata::s2 || stata == Stata::s3)
 	{
 		cout << "Real number" << endl;
 	}

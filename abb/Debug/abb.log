@@ -1,2 +1,3 @@
 ﻿  main.cpp
-  abb.vcxproj -> C:\Users\0219l\Desktop\abb\Debug\abb.exe
+D:\Github\CPPDemo\abb\main.cpp(119,20): warning C4018: “<”: 有符号/无符号不匹配
+  abb.vcxproj -> D:\Github\CPPDemo\abb\Debug\abb.exe
