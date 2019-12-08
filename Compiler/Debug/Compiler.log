@@ -1,4 +1,5 @@
-﻿  lexer.cpp
-C:\Users\0219l\Desktop\Compiler\lexer.h(64,31): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\0219l\Desktop\Compiler\lexer.h(79,1): warning C4554: “&”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+﻿  main.cpp
+C:\Users\0219l\Desktop\Compiler\lexer.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\0219l\Desktop\Compiler\lexer.h(40,35): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\0219l\Desktop\Compiler\lexer.h(44,35): warning C4018: “<”: 有符号/无符号不匹配
   Compiler.vcxproj -> C:\Users\0219l\Desktop\Compiler\Debug\Compiler.exe
