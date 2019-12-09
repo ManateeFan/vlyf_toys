@@ -1,18 +1,17 @@
 #pragma once
 
-class Point
-{
+class Point {
 private:
-	int xValue;
-	int yValue;
+  int xValue;
+  int yValue;
+
 public:
-	Point();
-	Point(int x, int y);
+  Point();
+  Point(int x, int y);
 
-	int x() const;
-	int y() const;
+  int x() const;
+  int y() const;
 
-	Point& x(int x);
-	Point& y(int y);
+  Point &x(int x);
+  Point &y(int y);
 };
-
